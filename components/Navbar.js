@@ -11,9 +11,6 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
-import { observer } from "mobx-react-lite";
-import Router from "next/router";
-import { useState, useEffect } from "react";
 import Widget from "./Widget";
 
 const pages = [

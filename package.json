@@ -2,7 +2,7 @@
   "name": "frontend-exam",
   "private": true,
   "engines":{
-    "node": "16.13.0"
+    
   },
   "scripts": {
     "dev": "next dev",

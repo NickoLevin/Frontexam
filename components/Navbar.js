@@ -15,7 +15,7 @@ import { observer } from "mobx-react-lite";
 import Router from "next/router";
 import { useState, useEffect } from "react";
 import Widget from "./Widget";
-const pages = [
+const navs = [
   <Link href="/" textDecoration="none">
     <Typography
       variant="h6"
@@ -178,9 +178,9 @@ function Navbar() {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                {navs.map((nav) => (
+                  <MenuItem key={nav} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{nav}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -194,13 +194,13 @@ function Navbar() {
               brom.ru
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
+              {navs.map((nav) => (
                 <Button
-                  key={page}
+                  key={nav}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "black", display: "block" }}
                 >
-                  {page}
+                  {nav}
                 </Button>
               ))}
             </Box>

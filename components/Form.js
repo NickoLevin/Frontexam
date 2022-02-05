@@ -4,33 +4,37 @@ import Loader from "../components/Loader";
 // import { getAdverts, getWidgetData } from "../../fetchData";
 import instance from "../API";
 
-const TYPES = [
+const Types = [
   {
     value: "car",
-    label: "Машина",
+    label: "Автомобиль",
   },
   {
     value: "apartment",
     label: "Квартира",
+  },
+  {
+    value: "apartment",
+    label: "Дом",
   },
 ];
 
 const Form = () => {
   const [type, setType] = useState("car");
   const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [price, setPrice] = useState("");
-  const [city, setCity] = useState("");
+  const [phone, setPhone] = useState("+7");
+  const [price, setPrice] = useState("0");
+  const [city, setCity] = useState("Москва");
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
   const [model, setModel] = useState("");
-  const [carType, setCarType] = useState("");
-  const [volume, setVolume] = useState("");
-  const [power, setPower] = useState("");
+  const [carType, setCarType] = useState("Седан");
+  const [volume, setVolume] = useState("0");
+  const [power, setPower] = useState("0");
 
-  const [rooms, setRooms] = useState("");
-  const [square, setSquare] = useState("");
+  const [rooms, setRooms] = useState("0");
+  const [square, setSquare] = useState("0");
 
   const [openForm, setOpenForm] = useState(false);
 
@@ -86,24 +90,24 @@ const Form = () => {
   return (
     <div>
       <Button
-        variant="contained"
-        style={{ marginBottom: "10px" }}
+        variant="text"
+        style={{ marginBottom: "10px", marginTop: "20px"}}
         onClick={() => {
           setOpenForm(!openForm);
         }}
       >
-        Показать/скрыть форму
+        Создать форму
       </Button>
       <Collapse in={openForm}>
         <Box
           component="form"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
+            "& .MuiTextField-root": { m: 1, width: "500 px" },
           }}
           autoComplete="off"
         >
           <TextField
-            id="outlined-select-currency"
+            id="filled-select-currency"
             select
             label="Тип"
             value={type}
@@ -112,7 +116,7 @@ const Form = () => {
             }}
             style={{ marginLeft: 0 }}
           >
-            {TYPES.map((option) => {
+            {Types.map((option) => {
               return (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
@@ -120,38 +124,9 @@ const Form = () => {
               );
             })}
           </TextField>
-          <br />
-          <TextField
-            id="outlined-basic"
-            label="Адрес"
-            variant="outlined"
-            value={address}
-            onChange={(e) => {
-              setAddress(e.target.value);
-            }}
-            style={{ marginLeft: 0 }}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Телефон"
-            variant="outlined"
-            value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Цена"
-            variant="outlined"
-            value={price}
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
-          />
-          <br />
-          <TextField
-            id="outlined-select-currency"
+          
+           <TextField
+            id="filled-select-currency"
             select
             label="Город"
             value={city}
@@ -169,12 +144,42 @@ const Form = () => {
             })}
           </TextField>
           <br />
+          <TextField
+            id="filled-basic"
+            label="Адрес"
+            variant="filled"
+            value={address}
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+            style={{ marginLeft: 0 }}
+          />
+          <TextField
+            id="filled-basic"
+            label="Номер телефона"
+            variant="filled"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+            }}
+          />
+          <TextField
+            id="filled-basic"
+            label="Цена"
+            variant="filled"
+            value={price}
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+          <br />
+         
           {type === "car" ? (
             <div>
               <TextField
-                id="outlined-basic"
+                id="filled-basic"
                 label="Марка"
-                variant="outlined"
+                variant="filled"
                 value={model}
                 onChange={(e) => {
                   setModel(e.target.value);
@@ -182,25 +187,25 @@ const Form = () => {
                 style={{ marginLeft: 0 }}
               />
               <TextField
-                id="outlined-basic"
+                id="filled-basic"
                 label="Объём двигателя"
-                variant="outlined"
+                variant="filled"
                 value={volume}
                 onChange={(e) => {
                   setVolume(e.target.value);
                 }}
               />
               <TextField
-                id="outlined-basic"
-                label="Мощность двигателя"
-                variant="outlined"
+                id="filled-basic"
+                label="Мощность двигателя (л.с)"
+                variant="filled"
                 value={power}
                 onChange={(e) => {
                   setPower(e.target.value);
                 }}
               />
               <TextField
-                id="outlined-select-currency"
+                id="filled-select-currency"
                 select
                 label="Тип кузова"
                 value={carType}
@@ -222,19 +227,9 @@ const Form = () => {
           ) : (
             <div>
               <TextField
-                id="outlined-basic"
+                id="filled-basic"
                 label="Кол-во комнат"
-                variant="outlined"
-                value={rooms}
-                onChange={(e) => {
-                  setRooms(e.target.value);
-                }}
-                style={{ marginLeft: 0 }}
-              />
-              <TextField
-                id="outlined-basic"
-                label="Кол-во комнат"
-                variant="outlined"
+                variant="filled"
                 value={square}
                 onChange={(e) => {
                   setSquare(e.target.value);
@@ -243,12 +238,12 @@ const Form = () => {
             </div>
           )}
 
-          <Box style={{ marginTop: "10px" }}>
-            <Button variant="contained" onClick={validate}>
-              Валидация
+          <Box style={{ marginTop: "10px", marginBottom: '15px' }}>
+            <Button variant="text" onClick={validate}>
+              Проверить
             </Button>
             <Button
-              variant="contained"
+              variant="text"
               onClick={submit}
               disabled={!successValidate}
               style={{ marginLeft: 5 }}

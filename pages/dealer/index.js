@@ -5,14 +5,20 @@ import CarsCard from '../../components/CarsCard';
 import ApartCard from '../../components/ApartmentsCard'
 import MainLayout from '../../components/MainLayout';
 import {Grid} from '@mui/material'
+import { Form } from '../../components/Form';
+import axios from 'axios';
+import Footer from "../../components/Footer";
+import  Navbar  from "../../components/Navbar";
+import { Container } from '@mui/material';
 
 const Dealer = () => {
-    const [dealers, setDealers] = useState();
+    const [adverts, setAdverts] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        instance.get('/api/brom/sales').then((res) => {
-            setDealers(res.data);
+        axios.get('https://demo-api.vsdev.space/api/brom/sales').then((res) => {
+            setAdverts(res.data);
             setLoading(false);
+            console.log(res.data);
         });
     }, []);
 
@@ -21,9 +27,13 @@ const Dealer = () => {
     }
 
     return (
-        <MainLayout>
+        <React.Fragment>
+        <Navbar />
+        <Container fixed style={{ paddingBottom: "64px" }}>
+        
+     
             <Grid container spacing={2}>
-                {dealers.map((dealer) => {
+                {adverts.map((dealer) => {
                     return dealer.type === 'car' ? (
                         <Grid item xs={4} key={dealer.id}>
                             <CarsCard key={dealer.id} data={dealer} />
@@ -37,7 +47,11 @@ const Dealer = () => {
                     );
                 })}
             </Grid>
-        </MainLayout>
+            <Form
+            /></Container>
+
+       <Footer />
+    </React.Fragment>
     );
 };
 

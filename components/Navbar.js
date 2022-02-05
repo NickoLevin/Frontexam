@@ -15,94 +15,7 @@ import { observer } from "mobx-react-lite";
 import Router from "next/router";
 import { useState, useEffect } from "react";
 import Widget from "./Widget";
-const navs = [
-  <Link href="/" textDecoration="none">
-    <Typography
-      variant="h6"
-      style={{
-        margin: "0 10px",
-        cursor: "pointer",
-        color: "#000000 ",
-        paddingRight: "20px",
-        textDecoration: "none",
-        "&:hover": {
-          color: "#000000",
-          textDecoration: "none",
-        },
-        "&:visited": {
-          color: "#000000",
-          textDecoration: "none",
-        },
-      }}
-    >
-      Home
-    </Typography>
-  </Link>,
-  <Link href="/dealer">
-  <Typography
-      variant="h6"
-      style={{
-        margin: "0 10px",
-        cursor: "pointer",
-        color: "#000000 ",
-        paddingRight: "20px",
-        textDecoration: "none",
-        "&:hover": {
-          color: "#000000",
-          textDecoration: "none",
-        },
-        "&:visited": {
-          color: "#000000",
-          textDecoration: "none",
-        },
-      }}
-    >
-      dealer
-      </Typography>
-  </Link>,
-  <Link href="/about" textDecoration="none">
-  <Typography
-    variant="h6"
-    style={{
-      margin: "0 10px",
-      cursor: "pointer",
-      color: "#000000 ",
-      paddingRight: "20px",
-      textDecoration: "none",
-      "&:hover": {
-        color: "#000000",
-        textDecoration: "none",
-      },
-      "&:visited": {
-        color: "#000000",
-        textDecoration: "none",
-      },
-    }}
-  >
-    about
-  </Typography>
-</Link>,
- <Typography
-   variant="h6"
-   style={{
-     margin: "0 10px",
-     cursor: "pointer",
-     color: "#000000 ",
-     paddingRight: "20px",
-     textDecoration: "none",
-     "&:hover": {
-       color: "#000000",
-       textDecoration: "none",
-     },
-     "&:visited": {
-       color: "#000000",
-       textDecoration: "none",
-     },
-   }}
- >
-   <Widget/>
- </Typography>,
-];
+
 const pages = [
   <Link href="/" textDecoration="none">
     <Typography
@@ -265,9 +178,9 @@ function Navbar() {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {navs.map((nav) => (
-                  <MenuItem key={nav} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{nav}</Typography>
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>

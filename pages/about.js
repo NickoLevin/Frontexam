@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import Loader from '../components/Loader'
 import instance from '../API';
 import { useState, useEffect } from "react";
+import CarouselMy from "../components/CarouselMy";
 
 
 
@@ -37,14 +38,7 @@ function about() {
             dangerouslySetInnerHTML={{ __html: about.text }}
         />
       <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+   <CarouselMy/>
       </div>
     </MainLayout>
   );

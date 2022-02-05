@@ -16,7 +16,7 @@ const Dealer = () => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         axios.get('https://demo-api.vsdev.space/api/brom/sales').then((res) => {
-            setDealers(res.data);
+            setDealers(res.data.reverse());
             setLoading(false);
             console.log(res.data);
         });

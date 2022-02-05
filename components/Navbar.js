@@ -103,7 +103,94 @@ const navs = [
    <Widget/>
  </Typography>,
 ];
-
+const pages = [
+  <Link href="/" textDecoration="none">
+    <Typography
+      variant="h6"
+      style={{
+        margin: "0 10px",
+        cursor: "pointer",
+        color: "#000000 ",
+        paddingRight: "20px",
+        textDecoration: "none",
+        "&:hover": {
+          color: "#000000",
+          textDecoration: "none",
+        },
+        "&:visited": {
+          color: "#000000",
+          textDecoration: "none",
+        },
+      }}
+    >
+      Home
+    </Typography>
+  </Link>,
+  <Link href="/dealer">
+  <Typography
+      variant="h6"
+      style={{
+        margin: "0 10px",
+        cursor: "pointer",
+        color: "#000000 ",
+        paddingRight: "20px",
+        textDecoration: "none",
+        "&:hover": {
+          color: "#000000",
+          textDecoration: "none",
+        },
+        "&:visited": {
+          color: "#000000",
+          textDecoration: "none",
+        },
+      }}
+    >
+      dealer
+      </Typography>
+  </Link>,
+  <Link href="/about" textDecoration="none">
+  <Typography
+    variant="h6"
+    style={{
+      margin: "0 10px",
+      cursor: "pointer",
+      color: "#000000 ",
+      paddingRight: "20px",
+      textDecoration: "none",
+      "&:hover": {
+        color: "#000000",
+        textDecoration: "none",
+      },
+      "&:visited": {
+        color: "#000000",
+        textDecoration: "none",
+      },
+    }}
+  >
+    about
+  </Typography>
+</Link>,
+ <Typography
+   variant="h6"
+   style={{
+     margin: "0 10px",
+     cursor: "pointer",
+     color: "#000000 ",
+     paddingRight: "20px",
+     textDecoration: "none",
+     "&:hover": {
+       color: "#000000",
+       textDecoration: "none",
+     },
+     "&:visited": {
+       color: "#000000",
+       textDecoration: "none",
+     },
+   }}
+ >
+   <Widget/>
+ </Typography>,
+];
 function Navbar() {
 
 
@@ -194,13 +281,13 @@ function Navbar() {
               brom.ru
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {navs.map((nav) => (
+              {pages.map((page) => (
                 <Button
-                  key={nav}
+                  key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "black", display: "block" }}
                 >
-                  {nav}
+                  {page}
                 </Button>
               ))}
             </Box>
